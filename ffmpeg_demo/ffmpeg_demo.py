@@ -1,27 +1,21 @@
+import sys
 import os
+import subprocess
 
-FPS = 4
-RSL = 6
-video_path = '/home/tangchen/dataset_4k/demo.mp4'
-ffmpeg_path = '/home/tangchen/ffmpeg/ffmpeg'
-result_path = ''
-command = [ffmpeg_path, " -i ", video_path, " -r ", "", " -s ", "", " -f image2 /home/tangchen/ffmpeg-opt/image-%4d.jpg"]
+path = "./dataset/youtube"
+video_path = os.path.join(path,"11SecondVideo.mp4")
+ffmpeg_path = '/home/ctang/ffmpeg/ffmpeg-4.2.3/ffmpeg'
+image_path = os.path.join(path,"11image_720p/image-%3d.png")
+command = [ffmpeg_path, "-i", video_path, "", "", "", "", "-f", "image2", image_path]
 
-def do_ffmpeg(c):
-    print("do command: ", c)
-    os.system(c)
+def do_ffmpeg():
+    print("do command: ", command)
+    subprocess.call(command)
     return 0
 
 def main():
-    rsl = input("please input resolution...")
-    print("resolution is ", rsl)
-    fps = input("please nput fps...")
-    print("fps is ", fps)
-
-    command[RSL] = rsl
-    command[FPS] = fps
-
-    do_ffmpeg("".join(command))
+    command[3:7] = sys.argv[-4:]
+    do_ffmpeg()
     return 0
 
 main()
