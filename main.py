@@ -27,7 +27,7 @@ def build_ground_truths():
 
 
 if __name__ == "__main__":
-    #build_ground_truths()
+    build_ground_truths()
     fps_list = conf.fps
     for j in range(len(fps_list)):
         t_fps = fps_list[j]
