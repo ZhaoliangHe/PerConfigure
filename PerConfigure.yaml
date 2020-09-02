@@ -1,7 +1,10 @@
 name: python33
 channels:
   - http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+<<<<<<< HEAD
   - defaults
+=======
+>>>>>>> chentang
   - http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
   - http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
@@ -10,6 +13,10 @@ channels:
   - http://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
   - http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
   - http://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+<<<<<<< HEAD
+=======
+  - defaults
+>>>>>>> chentang
 dependencies:
   - _libgcc_mutex=0.1=main
   - backports=1.0=py36_0
@@ -151,5 +158,9 @@ dependencies:
     - tqdm==4.46.1
     - urllib3==1.25.9
     - yacs==0.1.7
+<<<<<<< HEAD
 prefix: /home/hezhaoliang/anaconda3/envs/python33
+=======
+prefix: /home/ctang/anaconda3/envs/python33
+>>>>>>> chentang
 
