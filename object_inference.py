@@ -1,3 +1,4 @@
+'''
 <<<<<<< HEAD
 import io
 import os
@@ -195,6 +196,7 @@ for i in range(image_number):
 mean_elapsed = sum(elapsed[1:]) / float(len(elapsed)-1)
 print('Elapsed time: ' + str(mean_elapsed) + ' second per image')
 =======
+'''
 import io
 import os
 import scipy.misc
@@ -211,7 +213,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 import tensorflow as tf
 from object_detection.utils import visualization_utils as viz_utils
-
+import ffmpeg_code as fc
 
 # %matplotlib inline
 
@@ -354,27 +356,38 @@ def main(model_key, t, r, gpu_id, path, m_list=None, type=0):
     os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu_id)  # gpu id given by main.py
     model_display_name = model_key
     model_name = MODELS[model_display_name]
-    model_path = conf.path['user_path'] + conf.path['model_path'] \
+    # model_path = conf.path['user_path'] + conf.path['model_path'] \
+    #              + model_name + "/saved_model/"
+    model_path = conf.path['model_path'] \
                  + model_name + "/saved_model/"
 
     # load model
     start_time = time.time()
+    print('start load model')
     tf.keras.backend.clear_session()
+    print('clear loaded model')
     detect_fn = tf.saved_model.load(model_path)
     end_time = time.time()
     elapsed_time = end_time - start_time
     print('load model time: ' + str(elapsed_time) + 's')
 
     image_dir = path
+    # if type == 0:
+    #     result_path = conf.path['user_path'] + conf.path['project_path'] + "results/" + model_display_name
+    #     result_file = result_path + "_" + str(t) + '.defaultdict'
+    #     image_number = len(os.listdir(image_dir)) - 1
+    # else:
+    #     result_path = conf.path['user_path'] + conf.path['project_path'] + "results/" + "ground_truths"
+    #     result_file = result_path + ".defaultdict"
+    #     image_number = len(os.listdir(image_dir))
     if type == 0:
-        result_path = conf.path['user_path'] + conf.path['project_path'] + "results/" + model_display_name
+        result_path = conf.path['user_path'] + conf.path['project_path'] + conf.path['result_path'] + model_display_name
         result_file = result_path + "_" + str(t) + '.defaultdict'
         image_number = len(os.listdir(image_dir)) - 1
     else:
-        result_path = conf.path['user_path'] + conf.path['project_path'] + "results/" + "ground_truths"
+        result_path = conf.path['user_path'] + conf.path['project_path'] + conf.path['result_path'] + "ground_truths"
         result_file = result_path + ".defaultdict"
         image_number = len(os.listdir(image_dir))
-
     elapsed = []
     print("result file", result_file)
     detections_results = []
@@ -421,4 +434,11 @@ def main(model_key, t, r, gpu_id, path, m_list=None, type=0):
         print('Elapsed time: ' + str(mean_elapsed) + ' second per image')
     else:
         print("Result ", model_name, " already exist!")
->>>>>>> chentang
+
+if __name__ == '__main__':
+    r_frames, path = fc.ffmpeg_entry('ssd_mo', 15, "640x640")
+    img_dir = conf.path['user_path'] + conf.path['project_path'] \
+                 + conf.path['dataset_path'] + "_ssd_mo_15_640x640"
+    main('ssd_mo_640', 15, "640x640", 1, img_dir,)
+
+# >>>>>>> chentang

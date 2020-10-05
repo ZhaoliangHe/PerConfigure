@@ -5,8 +5,9 @@ path = {
     'project_path': 'PerConfigure/',
     # 'dataset_path' : 'dataset/youtube/demo1_10s', # dataset_path不需要扩展名
     'dataset_path': 'dataset/traffic/traffic_10s',  # dataset_path不需要扩展名
+    'result_path': 'traffic_results/',
     # 'model_path' : '.keras/models/',
-    'model_path': '/data/zlhe/keras/models',
+    'model_path': '/data/zlhe/keras/models/',
     'ffmpeg_path' : 'ffmpeg',
     'ffprobe_path' : 'ffprobe'
 }
