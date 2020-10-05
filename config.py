@@ -1,8 +1,12 @@
 path = {
-    'user_path' : '/home/ctang/',
-    'project_path' : 'Perf/',
-    'dataset_path' : 'dataset/youtube/demo1_10s', # dataset_path不需要扩展名
-    'model_path' : '.keras/models/',
+    # 'user_path' : '/home/ctang/',
+    'user_path': '/data/zlhe/github/',
+    # 'project_path' : 'Perf/',
+    'project_path': 'PerConfigure/',
+    # 'dataset_path' : 'dataset/youtube/demo1_10s', # dataset_path不需要扩展名
+    'dataset_path': 'dataset/traffic/traffic_10s',  # dataset_path不需要扩展名
+    # 'model_path' : '.keras/models/',
+    'model_path': '/data/zlhe/keras/models',
     'ffmpeg_path' : 'ffmpeg',
     'ffprobe_path' : 'ffprobe'
 }
